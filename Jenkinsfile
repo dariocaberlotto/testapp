@@ -8,14 +8,14 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                scipt {
+                script {
                     sh '/usr/local/bin/docker build -t testapp .'
                 }
             }
         }
         stage('Run Docker Container') {
             steps {
-                scipt {
+                script {
                     sh '/usr/local/bin/docker run -p 8090:80 testapp .'
                 }
             }
