@@ -6,10 +6,10 @@ pipeline {
                 git 'https://github.com/dariocaberlotto/testapp'
             }
         }
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'build -t testapp .'
+                    sh 'docker build -t testapp .'
                 }
             }
         }
