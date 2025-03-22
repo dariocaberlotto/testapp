@@ -1,16 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
                 git 'https://github.com/dariocaberlotto/testapp'
             }
         }
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
                 script {
                     sh 'docker build -t testapp .'
                 }
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'docker run --rm dariocaberlotto/testapp:${env.BUILD_NUMBER} ./run-tests.sh'
             }
         }
     }
