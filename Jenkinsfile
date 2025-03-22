@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "docker run --rm dariocaberlotto/testapp:${env.BUILD_NUMBER} ./run-tests.sh"
+                sh "docker run --rm dariocaberlotto/testapp:${env.BUILD_NUMBER} npm test"
             }
         }
     }
