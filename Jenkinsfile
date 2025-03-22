@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'docker build -t testapp .'
+                    sh 'docker build -t testapp:${env.BUILD_NUMBER} .'
                 }
             }
         }
