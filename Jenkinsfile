@@ -9,13 +9,13 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'docker build -t testapp:${env.BUILD_NUMBER} .'
+                    sh "docker build -t testapp:${env.BUILD_NUMBER} ."
                 }
             }
         }
         stage('Test') {
             steps {
-                sh 'docker run --rm dariocaberlotto/testapp:${env.BUILD_NUMBER} ./run-tests.sh'
+                sh "docker run --rm dariocaberlotto/testapp:${env.BUILD_NUMBER} ./run-tests.sh"
             }
         }
     }
