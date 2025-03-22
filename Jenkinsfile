@@ -3,22 +3,15 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/dariocaberlotto/testapp'
+                git branch: 'master', url: 'https://github.com/dariocaberlotto/testapp'
             }
         }
-        stage('Build Docker Image') {
+        /*stage('Build Docker Image') {
             steps {
                 script {
-                    sh '/usr/local/bin/docker build -t testapp .'
+                    dockerImage = docker.build("dariocaberlotto/testapp:${env.BUILD_NUMBER}")
                 }
             }
-        }
-        stage('Run Docker Container') {
-            steps {
-                script {
-                    sh '/usr/local/bin/docker run -p 8090:80 testapp .'
-                }
-            }
-        }
+        }*/
     }
 }
